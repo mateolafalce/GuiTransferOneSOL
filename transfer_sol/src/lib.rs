@@ -1,18 +1,26 @@
-use anchor_lang::prelude::*;
+use anchor_lang::{
+    solana_program::{
+        system_instruction::,
+        program::invoke,
+    },
+    prelude::*
+};
 
-declare_id!("97ico5tgMcM8xyeumNUroM51bKgnjjWgSbVdxqYPJYVb");
+declare_id!("97ico5tgMcM8xyeumNUroM51bKgnjjWgSbVdxqYPJYVb"); // Declare the program ID
 
-#[program]
+#[program] // Declare the program module
 pub mod transfer_one_sol {
     use super::*;
-
-    pub fn send_one_sol(ctx: Context<Transaction>, msg: String) -> Result<()> {
-        let transfer = anchor_lang::solana_program::system_instruction::transfer(
+    pub fn send_one_sol( // Define the program function
+        ctx: Context<Transaction>,
+        msg: String
+    ) -> Result<()> {
+        let transfer = transfer( // Create a transfer instruction using the Solana system program
             &ctx.accounts.from.key(),
             &ctx.accounts.to.key(),
             1000000000,
         );
-        anchor_lang::solana_program::program::invoke(
+        invokec( // Invoke the transfer instruction using the Solana program interface
             &transfer,
             &[
                 ctx.accounts.from.to_account_info(),
@@ -20,12 +28,12 @@ pub mod transfer_one_sol {
             ],
         )
         .expect("Error");
-        msg!("{}", msg);
+        msg!("{}", msg); // Print user message to the console
         Ok(())
     }
 }
 
-#[derive(Accounts)]
+#[derive(Accounts)] // Declare the program accounts using the `#[derive(Accounts)]` macro
 pub struct Transaction<'info> {
     pub system_program: Program<'info, System>,
     /// CHECK: This is not dangerous because we don't read or write from this account

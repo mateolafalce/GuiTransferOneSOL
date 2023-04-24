@@ -16,35 +16,41 @@ use std::{
     str::FromStr,
     rc::Rc
 };
-use crate::functions::Wallet;
+use crate::functions::Wallet; // Import Wallet struct from functions module
 use serde_json::from_str;
 
-pub fn send_sol(message:String) -> Result<(), Error> {
-    let contents: String = read_to_string("src/wallet.json").unwrap();
-    let wallet: Wallet = from_str(&contents).unwrap();
-    let payer: Keypair = Keypair::from_bytes(&wallet.wallet).expect("Requires a keypair");
-    let client: Client = Client::new(Cluster::Devnet, Rc::new(payer));
+pub fn send_sol(
+    message:String
+) -> Result<(), Error> {
+    let contents: String = read_to_string("src/wallet.json").unwrap(); // Read wallet file into a string
+    let wallet: Wallet = from_str(&contents).unwrap(); // Deserialize wallet string into Wallet struct
+    let payer: Keypair = Keypair::from_bytes(&wallet.wallet).expect("Requires a keypair"); // Create a Keypair from wallet bytes
+    let client: Client = Client::new(Cluster::Devnet, Rc::new(payer)); // Create a client with payer keypair
     let program: Program =
         client.program(
             Pubkey::from_str(
-                &"97ico5tgMcM8xyeumNUroM51bKgnjjWgSbVdxqYPJYVb".to_string()
+                &"97ico5tgMcM8xyeumNUroM51bKgnjjWgSbVdxqYPJYVb".to_string() // Convert string to Pubkey
             ).unwrap()
-        );
-    transfer(program, message).expect("Send");
-    Ok(())
+        ); // Load program with given pubkey
+    transfer(program, message).expect("Send"); // Call transfer function with program and message
+    Ok(()) // Return Ok result
 }
 
-pub fn transfer(program: Program, msg: String) -> Result<(), Error> {
-    let luck_addres: Keypair = Keypair::new();
-    let signature: Signature = program
+
+pub fn transfer(
+    program: Program,
+    msg: String
+) -> Result<(), Error> {
+    let luck_addres: Keypair = Keypair::new(); // Create a new keypair to hold the destination address
+    let signature: Signature = program // Send a transaction to the program with the specified accounts and arguments
         .request()
         .accounts(transfer_one_sol::accounts::Transaction {
-            from: program.payer(),
-            to: luck_addres.pubkey(),
-            system_program: system_program::ID,
+            from: program.payer(), // Set the account to send the funds from as the payer of the program
+            to: luck_addres.pubkey(), // Set the destination address to the new keypair we created earlier
+            system_program: system_program::ID, // Set the system program to use for this transaction
         })
-        .args(transfer_one_sol::instruction::SendOneSol { msg })
-        .send().unwrap();
-    println!("{}", signature);
-    Ok(())
+        .args(transfer_one_sol::instruction::SendOneSol { msg }) // Set the argument to the `SendOneSol` instruction
+        .send().unwrap(); // Send the transaction and retrieve the signature of the transaction
+    println!("{}", signature); // Print the signature of the transaction to the console
+    Ok(()) // Return a successful result
 }

@@ -50,7 +50,7 @@ pub fn transfer(
             system_program: system_program::ID, // Set the system program to use for this transaction
         })
         .args(transfer_one_sol::instruction::SendOneSol { msg }) // Set the argument to the `SendOneSol` instruction
-        .send().unwrap(); // Send the transaction and retrieve the signature of the transaction
+        .send().unwrap(); 
     println!("{}", signature); // Print the signature of the transaction to the console
     Ok(()) // Return a successful result
 }

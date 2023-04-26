@@ -16,7 +16,7 @@ use std::{
     str::FromStr,
     rc::Rc
 };
-use crate::functions::Wallet; // Import Wallet struct from functions module
+use crate::functions::Wallet;
 use serde_json::from_str;
 
 pub fn send_sol(
@@ -50,7 +50,7 @@ pub fn transfer(
             system_program: system_program::ID, // Set the system program to use for this transaction
         })
         .args(transfer_one_sol::instruction::SendOneSol { msg }) // Set the argument to the `SendOneSol` instruction
-        .send().unwrap(); 
+        .send().unwrap();
     println!("{}", signature); // Print the signature of the transaction to the console
     Ok(()) // Return a successful result
 }

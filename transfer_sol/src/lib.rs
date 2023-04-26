@@ -1,6 +1,6 @@
 use anchor_lang::{
     solana_program::{
-        system_instruction::,
+        system_instruction::transfer,
         program::invoke,
     },
     prelude::*
@@ -20,7 +20,7 @@ pub mod transfer_one_sol {
             &ctx.accounts.to.key(),
             1000000000,
         );
-        invokec( // Invoke the transfer instruction using the Solana program interface
+        invoke( // Invoke the transfer instruction using the Solana program interface
             &transfer,
             &[
                 ctx.accounts.from.to_account_info(),

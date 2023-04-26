@@ -11,7 +11,8 @@ use fltk::{
         Color,
         FrameType,
         Font,
-        Cursor
+        Cursor,
+        Event
     },
     window::Window,
     frame::Frame,
@@ -19,6 +20,7 @@ use fltk::{
     image::IcoImage,
     button::Button,
     input::Input,
+    draw::set_cursor,
     dialog::{
         NativeFileChooser,
         NativeFileChooserType,
@@ -48,6 +50,19 @@ async fn main() {
     // Create the input button for the wallet address
     let mut btn_input_wallet: Button = Button::new(350, 90, 350, 30, "Enter your Wallet");
     btn_input_wallet.set_frame(FrameType::GleamThinDownBox);
+    btn_input_wallet.handle(move |_, event| {
+        match event {
+            Event::Enter => {
+                set_cursor(Cursor::Hand);
+                true
+            },
+            Event::Leave => {
+                set_cursor(Cursor::Arrow);
+                true
+            },
+            _ => false,
+        }
+    });
     // Create the frame and input box for leaving a message
     let mut leave_a_message: Frame = Frame::new(370, 135, 300, 30, "Leave a message to the recipient");
     leave_a_message.set_label_size(16);

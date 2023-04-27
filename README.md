@@ -16,7 +16,7 @@ The application has three buttons: "Enter your Wallet", "Leave a message to the 
 
 The code snippet also creates a top bar that contains the Solana logo and the title of the app.
 
-<h3 align="center">Dependencies</h3>
+<h3 align="center">🛠️Dependencies</h3>
 
 Here are the dependencies used in this application:
 
@@ -30,7 +30,7 @@ Here are the dependencies used in this application:
 | serde | 1.0.158 | A framework used to derive serialization and deserialization implementations for Rust data structures. |
 | tokio | 1.26.0 | A runtime for writing reliable asynchronous applications in Rust. It is used in this application to spawn a task for sending the SOL transfer asynchronously. |
 
-<h3 align="center">Usage</h3>
+<h3 align="center">🚀Usage</h3>
 
 To run the application, run the following command:
 
@@ -60,3 +60,7 @@ The Wallet struct is defined with a public wallet field of type Vec<u8>. This st
 ![save_wallet](src/message.gif)
 
 </div>
+
+When using the Rust GUI developed with fltk.rs to send a native SOL transfer on the Solana blockchain, there is an option to leave a message for the transfer recipient. It's important to note that this message will be stored on the Solana blockchain as part of the transaction, which means it will be publicly accessible to anyone who has access to the blockchain.
+
+It's important to be careful when writing messages on the Solana blockchain, and carefully consider what information you want to share publicly.

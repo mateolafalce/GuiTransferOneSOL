@@ -16,7 +16,7 @@ The application has three buttons: "Enter your Wallet", "Leave a message to the 
 
 The code snippet also creates a top bar that contains the Solana logo and the title of the app.
 
-<h4 align="center">Dependencies</h4>
+<h3 align="center">Dependencies</h3>
 
 Here are the dependencies used in this application:
 
@@ -34,7 +34,7 @@ Here are the dependencies used in this application:
 
 - **tokio version 1.26.0**: A runtime for writing reliable asynchronous applications in Rust. It is used in this application to spawn a task for sending the SOL transfer asynchronously.
 
-<h4 align="center">Usage</h4>
+<h3 align="center">Usage</h3>
 
 To run the application, run the following command:
 
@@ -48,11 +48,12 @@ This will launch the application and allow you to start sending SOL transfers on
 ![transfer-one-sol-gui](src/transfer-one-sol-gui.png)
 
 ---
-
-<h4 align="center">First, choose your wallet</h4>
+<div align="center">
+<h4>First, choose your wallet</h4>
 
 ![save_wallet](src/save_wallet.gif)
 
+</div>
 In the logic program the module exports a function called store_wallet that takes a Vec<u8> representing a new wallet and writes it to a JSON file named "src/wallet.json". The function first reads the existing wallet from the file, updates it with the new wallet, and then writes the updated wallet back to the file.
 
 The Wallet struct is defined with a public wallet field of type Vec<u8>. This struct is derived from the Debug, Deserialize, and Serialize traits provided by the serde library. These traits enable serialization and deserialization of the Wallet struct to and from JSON format.

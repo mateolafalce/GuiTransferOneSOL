@@ -19,12 +19,21 @@ use std::{
 };
 use crate::functions::Wallet;
 use serde_json::from_str;
-use fltk::dialog::message_default;
+use fltk::{
+    app::screen_size,
+    dialog::alert
+};
+
+pub fn center() -> (i32, i32) {
+    (
+        (screen_size().0 / 2.0) as i32,
+        (screen_size().1 / 2.0) as i32,
+    )
+}
 
 pub fn send_sol(
     message:String
-) {
-    thread::spawn(move || {
+) -> Result<(), Error>{
     let contents: String = read_to_string("src/wallet.json").unwrap(); // Read wallet file into a string
     let wallet: Wallet = from_str(&contents).unwrap(); // Deserialize wallet string into Wallet struct
     let payer = Keypair::from_bytes(&wallet.wallet); // Create a Keypair from wallet bytes
@@ -37,22 +46,22 @@ pub fn send_sol(
                         &"97ico5tgMcM8xyeumNUroM51bKgnjjWgSbVdxqYPJYVb".to_string() // Convert string to Pubkey
                     ).unwrap()
                 ); // Load program with given pubkey
-                let tx_signature= transfer(program, message); // Call transfer function with program and message
+            let tx_signature= transfer(program, message); // Call transfer function with program and message
             match tx_signature {
                 Ok(tx) =>{
                     let msg: String = "Tx: ".to_owned() + &tx;
-                    message_default(&msg);
+                    alert(center().0, center().1, &msg);
                 }
                 Err(e) => {
-                    message_default(&e.to_string());
+                    alert(center().0, center().1, &e.to_string());
                 }
             }
         }
         Err(e) => {
-            message_default(&e.to_string());
+            alert(center().0, center().1, &e.to_string());
         }
     }
-});
+    Ok(())
 }
 
 

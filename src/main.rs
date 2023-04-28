@@ -120,12 +120,8 @@ async fn main() {
     btn_send_tx.set_callback(move|_| {
         // Get the message to send from the message input field
         let msg: String = message.value();
-        // Create an asynchronous task to send the transaction
-        let tx = async move {
-            send_sol::send_sol(msg);
-            clear::clear().unwrap();
-        };
-        tokio::spawn(tx); // Spawn the asynchronous task
+        send_sol::send_sol(msg).unwrap();
+        clear::clear().unwrap();
     });
     btn_send_tx.handle(move |_, event| {
         match event {

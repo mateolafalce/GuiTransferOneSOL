@@ -122,10 +122,23 @@ async fn main() {
         let msg: String = message.value();
         // Create an asynchronous task to send the transaction
         let tx = async move {
-            send_sol::send_sol(msg).expect("Error");
+            send_sol::send_sol(msg);
             clear::clear().unwrap();
         };
         tokio::spawn(tx); // Spawn the asynchronous task
+    });
+    btn_send_tx.handle(move |_, event| {
+        match event {
+            Event::Enter => {
+                set_cursor(Cursor::Hand);
+                true
+            },
+            Event::Leave => {
+                set_cursor(Cursor::Arrow);
+                true
+            },
+            _ => false,
+        }
     });
     wind.end(); // End the creation of the window
     wind.show(); // Show the window

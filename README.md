@@ -59,6 +59,7 @@ In the logic program the module exports a function called store_wallet that take
 The Wallet struct is defined with a public wallet field of type Vec<u8>. This struct is derived from the Debug, Deserialize, and Serialize traits provided by the serde library. These traits enable serialization and deserialization of the Wallet struct to and from JSON format.
 
 <div align="center">
+
 <h4>Leave a message to the recipient</h4>
 
 ![save_wallet](src/message.gif)
@@ -68,3 +69,13 @@ The Wallet struct is defined with a public wallet field of type Vec<u8>. This st
 When using the Rust GUI developed with fltk.rs to send a native SOL transfer on the Solana blockchain, there is an option to leave a message for the transfer recipient. It's important to note that this message will be stored on the Solana blockchain as part of the transaction, which means it will be publicly accessible to anyone who has access to the blockchain.
 
 It's important to be careful when writing messages on the Solana blockchain, and carefully consider what information you want to share publicly.
+
+<div align="center">
+
+<h4>Send SOL to the recipient</h4>
+
+![send_sol](src/send_sol.gif)
+
+</div>
+
+After sending SOL, the application will display a message with the corresponding transaction information. To verify that the transfer was successful, you can go to any Solana transaction explorer and check that the SOL has been correctly sent to the recipient. It is important to note that the transaction may take a few minutes to be confirmed and added to the Solana blockchain, so it is recommended to wait a bit before checking its status. Additionally, it is important to verify that the recipient's address is correct before making the transaction to avoid any errors or loss of funds.

@@ -80,7 +80,7 @@ It's important to be careful when writing messages on the Solana blockchain, and
 
 After sending SOL, the application will display a message with the corresponding transaction information. To verify that the transfer was successful, you can go to any Solana transaction explorer and check that the SOL has been correctly sent to the recipient. It is important to note that the transaction may take a few minutes to be confirmed and added to the Solana blockchain, so it is recommended to wait a bit before checking its status. Additionally, it is important to verify that the recipient's address is correct before making the transaction to avoid any errors or loss of funds.
 
-<h3 align="center">License</h3>
+<h3 align="center">License📜</h3>
 
 This project is licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. You may obtain a copy of the License at:
 
@@ -88,4 +88,8 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
+<div align="center">
+
 ![license](src/license.png)
+
+</div>

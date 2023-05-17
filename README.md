@@ -90,6 +90,6 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <div align="center">
 
-![license](src/license.png)
+![license](license.png)
 
 </div>

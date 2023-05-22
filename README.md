@@ -11,15 +11,14 @@
 
 ---
 
-<h3 align="center">📝App logic</h3>
-
 The app allows the user to send native SOL transfers on the Solana blockchain.
 
 The application has three buttons: "Enter your Wallet", "Leave a message to the recipient" and "Send the Tx". When the user clicks "Enter your Wallet", a file selection dialog opens allowing the user to select a JSON file containing their wallet information. The wallet information is stored using the store_wallet function. When the user clicks "Send the Tx", the program sends the SOL transfer using the extracted wallet information and the message provided by the user.
 
 The code snippet also creates a top bar that contains the Solana logo and the title of the app.
 
-<h3 align="center">🛠️Dependencies</h3>
+<details>
+<summary>🛠️Dependencies</summary>
 
 Here are the dependencies used in this application:
 
@@ -32,6 +31,8 @@ Here are the dependencies used in this application:
 | serde_json | 1.0.94 | A Rust crate that provides serialization and deserialization of JSON data. |
 | serde | 1.0.158 | A framework used to derive serialization and deserialization implementations for Rust data structures. |
 | tokio | 1.26.0 | A runtime for writing reliable asynchronous applications in Rust. It is used in this application to spawn a task for sending the SOL transfer asynchronously. |
+
+</details>
 
 <h3 align="center">🚀Usage</h3>
 

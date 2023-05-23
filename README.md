@@ -89,7 +89,11 @@ After sending SOL, the application will display a message with the corresponding
 
 </details>
 
-<h3 align="center">License📜</h3>
+<details>
+<summary>📜License</summary>
+
+<br>
+
 
 This project is licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. You may obtain a copy of the License at:
 
@@ -102,3 +106,5 @@ Unless required by applicable law or agreed to in writing, software distributed 
 ![license](license.png)
 
 </div>
+
+</details>

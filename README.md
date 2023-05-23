@@ -6,7 +6,8 @@
 
 </h1>
 
-  This program, developed with fltk.rs, aims to provide a user interface for native SOL transfers on the Solana blockchain.
+  A user interface for native SOL transfers in Solana.
+
 </div>
 
 ---
@@ -19,6 +20,8 @@ The code snippet also creates a top bar that contains the Solana logo and the ti
 
 <details>
 <summary>🛠️Dependencies</summary>
+
+<br>
 
 Here are the dependencies used in this application:
 

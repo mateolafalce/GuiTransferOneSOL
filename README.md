@@ -37,7 +37,10 @@ Here are the dependencies used in this application:
 
 </details>
 
-<h3 align="center">🚀Usage</h3>
+<details>
+<summary>🚀Usage</summary>
+
+<br>
 
 To run the application, run the following command:
 
@@ -83,6 +86,8 @@ It's important to be careful when writing messages on the Solana blockchain, and
 </div>
 
 After sending SOL, the application will display a message with the corresponding transaction information. To verify that the transfer was successful, you can go to any Solana transaction explorer and check that the SOL has been correctly sent to the recipient. It is important to note that the transaction may take a few minutes to be confirmed and added to the Solana blockchain, so it is recommended to wait a bit before checking its status. Additionally, it is important to verify that the recipient's address is correct before making the transaction to avoid any errors or loss of funds.
+
+</details>
 
 <h3 align="center">License📜</h3>
 
